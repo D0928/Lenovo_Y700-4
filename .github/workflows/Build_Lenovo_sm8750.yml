@@ -450,7 +450,7 @@ jobs:
               done
               [ -z "$KSU_API_VERSION" ] && KSU_API_VERSION="4.1.0"
               echo "KSU_API_VERSION=$KSU_API_VERSION" >> $GITHUB_ENV
-              VERSION_DEFINITIONS=$'define get_ksu_version_full\nv\\$1-'"$GIT_COMMIT_HASH"$'-TG@qdykernel\nendef\n\nKSU_VERSION_API := '"$KSU_API_VERSION"$'\nKSU_VERSION_FULL := v'"$KSU_API_VERSION"$'-'"$GIT_COMMIT_HASH"$'-TG@qdykernel'
+              VERSION_DEFINITIONS=$'define get_ksu_version_full\nv\\$1-'"$GIT_COMMIT_HASH"$'-闲鱼@人间几度秋\nenddef\n\nKSU_VERSION_API := '"$KSU_API_VERSION"$'\nKSU_VERSION_FULL := v'"$KSU_API_VERSION"$'-'"$GIT_COMMIT_HASH"$'-闲鱼@人间几度秋'
               
               sed -i '/define get_ksu_version_full/,/endef/d' kernel/Makefile
               sed -i '/KSU_VERSION_API :=/d' kernel/Makefile
@@ -465,7 +465,7 @@ jobs:
               echo "ksuver=$KSU_VERSION" >> $GITHUB_OUTPUT
               grep -A10 "REPO_OWNER" kernel/Makefile
               grep "KSU_VERSION_FULL" kernel/Makefile
-              echo "SukiSU版本号: v${KSU_API_VERSION}-${GIT_COMMIT_HASH}-TG@qdykernel"
+              echo "SukiSU版本号: v${KSU_API_VERSION}-${GIT_COMMIT_HASH}-闲鱼@人间几度秋"
             fi
 
       - name: 🔧 Set up SUSFS (配置 SUSFS)
@@ -495,7 +495,7 @@ jobs:
           echo "CONFIG_KPM=y" >> ./common/arch/arm64/configs/gki_defconfig
           
           if [ "${{ env.KSU_TYPE }}" == 'ReSukiSU' ]; then
-            echo 'CONFIG_KSU_FULL_NAME_FORMAT="%TAG_NAME%-%COMMIT_SHA%-Re-TG@qdykernel"' >> ./common/arch/arm64/configs/gki_defconfig
+            echo 'CONFIG_KSU_FULL_NAME_FORMAT="%TAG_NAME%-%COMMIT_SHA%-Re-闲鱼@人间几度秋"' >> ./common/arch/arm64/configs/gki_defconfig
           fi
           
           if [ "${{ env.ENABLE_SUSFS }}" == 'true' ];then
